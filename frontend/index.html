@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SignaBridge</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header><h1>SignaBridge</h1><p>When silence shouldn't be life-threatening</p>
+  <nav><button id="tab-patient" class="on">Patient</button><button id="tab-doctor">Doctor</button></nav>
+  <span id="status">checking server…</span></header>
+<div id="error" role="alert" hidden></div>
+
+<main id="patient">
+  <section><h2>Camera</h2>
+    <video id="cam" autoplay muted playsinline></video>
+    <button id="camBtn">Start camera</button>
+    <p class="note">Prototype: the camera shows the setup only. Recognition is simulated by the sign picker below (real model = MediaPipe + classifier, see README).</p></section>
+  <section><h2>What is the patient signing?</h2>
+    <p><button id="emergencyBtn" class="danger">🚨 Emergency – call staff now</button></p>
+    <div id="signs" class="chips"></div>
+    <h3>Facial expression / posture</h3><div id="affects" class="chips"></div>
+    <p><button id="sendBtn" class="primary">Send to medical staff</button></p>
+    <p id="sentInfo"></p></section>
+  <section><h2>Reply from staff</h2>
+    <div id="avatar"><div id="avatarFace">🧑‍⚕️</div><div id="glossStrip">Waiting for a reply…</div></div>
+    <div id="confirm" class="row" hidden>
+      <button data-s="understood" class="primary">Understood</button>
+      <button data-s="not_understood">Not understood</button>
+      <button data-s="repeat">Repeat</button></div></section>
+</main>
+
+<main id="doctor" hidden>
+  <section><h2>Patient messages</h2>
+    <div id="stats" class="stats"></div>
+    <div class="row"><label><input type="checkbox" id="pendingOnly"> Show only unanswered</label>
+      <button id="resetBtn">Clear demo data</button></div>
+    <div id="inbox">No messages yet.</div></section>
+</main>
+<script src="app.js"></script></body></html>

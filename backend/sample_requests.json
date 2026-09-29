@@ -1,0 +1,19 @@
+{
+  "base_url": "http://localhost:5000/api",
+  "requests": [
+    {"name": "Health", "method": "GET", "path": "/health"},
+    {"name": "Vocabulary", "method": "GET", "path": "/vocabulary"},
+    {"name": "Quick replies", "method": "GET", "path": "/templates"},
+    {"name": "Patient sends signs", "method": "POST", "path": "/patient/interpret", "body": {"signs": ["CHEST", "PAIN"], "affect": "visible_pain"}},
+    {"name": "Patient emergency button", "method": "POST", "path": "/patient/emergency"},
+    {"name": "Doctor inbox", "method": "GET", "path": "/doctor/inbox"},
+    {"name": "Doctor inbox (unanswered only)", "method": "GET", "path": "/doctor/inbox?pending=1"},
+    {"name": "Doctor reviews", "method": "POST", "path": "/doctor/review/1", "body": {"action": "confirm"}},
+    {"name": "Doctor overrides", "method": "POST", "path": "/doctor/review/1", "body": {"action": "override", "override_text": "Patient means stomach pain"}},
+    {"name": "Doctor replies", "method": "POST", "path": "/doctor/respond", "body": {"message_id": 1, "text": "Where is the pain? Please wait, the doctor will come now."}},
+    {"name": "Patient polls reply", "method": "GET", "path": "/patient/response/latest"},
+    {"name": "Patient confirms", "method": "POST", "path": "/patient/confirm/1", "body": {"status": "understood"}},
+    {"name": "Stats", "method": "GET", "path": "/stats"},
+    {"name": "Reset demo data", "method": "POST", "path": "/reset"}
+  ]
+}
